@@ -1,0 +1,153 @@
+.keyboard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+
+	&__title {
+		font-size: 2rem;
+		font-weight: 600;
+		color: rgb(117, 167, 117);
+	}
+
+	&__input {
+		margin: 0 0 10px 0;
+		padding: 10px;
+		resize: both;
+
+		border: 3px solid #000;
+		border-radius: 5px;
+	}
+
+	&__keys {
+		display: flex;
+		flex-direction: column;
+		padding: 2px;
+
+		background: #888888;
+		border: 3px solid #000;
+		border-radius: 5px;
+	}
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__key {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 3px;
+		min-width: 40px;
+		min-height: 40px;
+
+
+		color: azure;
+		border-radius: 5px;
+		background: #444444;
+
+		&:hover {
+			cursor: pointer;
+			background: rgb(117, 167, 117);
+			transition: 0.3s;
+		}
+
+		&_service {
+			background-color: #222222;
+		}
+
+		&_tab {
+			width: 50px;
+		}
+
+		&_backspace {
+			width: 100px;
+		}
+
+		&_del {
+			width: 44px;
+		}
+
+		&_caps-lock {
+			width: 100px;
+		}
+
+		&_enter {
+			width: 86px;
+		}
+
+		&_shift {}
+
+		&_left-shift {
+			width: 100px;
+		}
+
+		&_right-shift {
+			width: 86px;
+		}
+
+		&_space {
+			flex: 1 1 auto;
+		}
+
+		&_ctrl {}
+
+		&_left-ctrl {}
+
+		&_right-crtl {}
+
+		&_win {}
+
+		&_alt {}
+
+		&_left-alt {}
+
+		&_right-alt {}
+
+		&_up {
+			span {
+				width: 0;
+				height: 0;
+				border-left: 6px solid transparent;
+				border-right: 6px solid transparent;
+				border-bottom: 12px solid azure;
+			}
+		}
+
+		&_down {
+			span {
+				width: 0;
+				height: 0;
+				border-left: 6px solid transparent;
+				border-right: 6px solid transparent;
+				border-top: 12px solid azure;
+			}
+		}
+
+		&_left {
+			span {
+				width: 0;
+				height: 0;
+				border-top: 6px solid transparent;
+				border-bottom: 6px solid transparent;
+				border-right: 12px solid azure;
+			}
+		}
+
+		&_right {
+			span {
+				width: 0;
+				height: 0;
+				border-top: 6px solid transparent;
+				border-bottom: 6px solid transparent;
+				border-left: 12px solid azure;
+			}
+		}
+	}
+
+	&__key._active {
+		border-radius: 40px;
+		background-color: rgb(22, 172, 22);
+	}
+}

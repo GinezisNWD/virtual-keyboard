@@ -37,7 +37,6 @@ function initKeyboard(lang = en) {
 	keyboard.append(keyboarKeys)
 
 	createButtons(lang)
-
 }
 
 function createButtons(array) {
@@ -50,8 +49,6 @@ function createButtons(array) {
 			const keyboardKey = document.createElement('button')
 			keyboardKey.classList.add('keyboard__key')
 			keyboardKey.setAttribute('value', `${array[i][j]}`)
-
-
 
 			keyboardKey.textContent = array[i][j]
 			if (array[i][j] === 'Backquote') {
@@ -66,11 +63,9 @@ function createButtons(array) {
 			if (array[i][j] === 'Equal') {
 				keyboardKey.textContent = '='
 			}
-
 			if (array[i][j].startsWith('Key')) {
 				keyboardKey.textContent = array[i][j].at(3).toLowerCase()
 			}
-
 			if (array[i][j] === 'BracketLeft') {
 				keyboardKey.textContent = '['
 			}
@@ -101,8 +96,6 @@ function createButtons(array) {
 			if (array[i][j] === 'Slash') {
 				keyboardKey.textContent = '/'
 			}
-
-
 			if (array[i][j] === 'ControlLeft' || array[i][j] === 'ControlRight') {
 				keyboardKey.textContent = 'Ctrl'
 			}
@@ -115,13 +108,9 @@ function createButtons(array) {
 			if (array[i][j] === 'Space') {
 				keyboardKey.textContent = ''
 			}
-
 			if (array[i][j] === 'ArrowUp' || array[i][j] === 'ArrowLeft' || array[i][j] === 'ArrowDown' || array[i][j] === 'ArrowRight') {
 				keyboardKey.innerHTML = '<span></span>'
 			}
-
-
-
 
 			keyboardRow.append(keyboardKey)
 		}
@@ -146,7 +135,5 @@ function createButtons(array) {
 	renderedKeys[62].classList.add('keyboard__key_service', 'keyboard__key_right')
 	renderedKeys[63].classList.add('keyboard__key_service', 'keyboard__key_ctrl', 'keyboard__key_right-ctrl')
 }
-
-
 
 export { init, initKeyboard }

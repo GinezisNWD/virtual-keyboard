@@ -3,22 +3,19 @@ init()
 initKeyboard()
 
 const renderedKeys = document.querySelectorAll('.keyboard__key')
+const textArea = document.querySelector('.keyboard__input')
 
-window.addEventListener('keydown', function (e) {
-	console.log(e.code)
+
+document.addEventListener('keydown', function (e) {
 	console.log(e.key)
-	for (let i = 0; i < renderedKeys.length; i++) {
-		if (e.code === renderedKeys[i].getAttribute('value')) {
-			renderedKeys[i].classList.add('_active')
-		}
+	console.log(e.code)
+	if (e.code === 'Tab') {
+		e.preventDefault()
 	}
+	renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
+
 })
 
-window.addEventListener('keyup', function (e) {
-	for (let i = 0; i < renderedKeys.length; i++) {
-		if (e.code === renderedKeys[i].getAttribute('value')) {
-			renderedKeys[i].classList.remove('_active')
-		}
-	}
+document.addEventListener('keyup', function (e) {
+	renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.remove('_active')
 })
-

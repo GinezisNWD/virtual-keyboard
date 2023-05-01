@@ -47,7 +47,7 @@ function createButtons(array) {
 		keyboardRow.classList.add('keyboard__row')
 		keyboarKeys.append(keyboardRow)
 		for (let j = 0; j < array[i].length; j++) {
-			const keyboardKey = document.createElement('div')
+			const keyboardKey = document.createElement('button')
 			keyboardKey.classList.add('keyboard__key')
 			keyboardKey.setAttribute('value', `${array[i][j]}`)
 

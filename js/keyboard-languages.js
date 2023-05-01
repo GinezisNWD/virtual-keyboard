@@ -9,7 +9,6 @@ const en = [
 		'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',],
 	['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft',
 		'ArrowDown', 'ArrowRight', 'ControlRight',],
-
 ]
 
 const enAlt = [[]]

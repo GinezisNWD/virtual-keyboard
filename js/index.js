@@ -1,4 +1,5 @@
 import { init, initKeyboard } from "./keyboard-render.js"
+import { keysToUpperCase } from "./keyboard-key-functions.js"
 init()
 initKeyboard()
 
@@ -18,6 +19,7 @@ document.addEventListener('keydown', function (e) {
 	}
 	if (e.code === 'CapsLock') {
 		isCapsActive = !isCapsActive
+		keysToUpperCase(isCapsActive, renderedKeys)
 	}
 	renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
 
@@ -72,3 +74,7 @@ textArea.addEventListener('keydown', function (e) {
 
 	textArea.value += eKey
 })
+
+
+const test = [1, 2, 3]
+console.log(test.filter(elem => elem !== 2))

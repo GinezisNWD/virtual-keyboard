@@ -37,6 +37,12 @@ function initKeyboard(lang = eCodes) {
 	keyboard.append(keyboarKeys)
 
 	createButtons(lang)
+
+	const keyboardInfo = document.createElement('div')
+	keyboardInfo.classList.add('keyboard__info')
+	keyboardInfo.innerHTML = 'Для переключения языка комбинация: левыe shift + alt'
+	keyboard.append(keyboardInfo)
+
 }
 
 function createButtons(array) {

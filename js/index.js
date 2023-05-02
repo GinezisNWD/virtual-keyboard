@@ -7,9 +7,8 @@ initKeyboard()
 const renderedKeys = document.querySelectorAll('.keyboard__key')
 const textArea = document.querySelector('.keyboard__input')
 const capsLockKey = document.querySelector('.keyboard__key_caps-lock');
-const serviceKeys = ['Backspace', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ArrowUp',
-	'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ArrowLeft',
-	'ArrowDown', 'ArrowRight', 'ControlRight',]
+const serviceKeys = ['Delete', 'CapsLock', 'Enter', 'ShiftLeft',
+	'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ControlRight',]
 let isCapsActive = false
 let isEnglish = true
 
@@ -100,8 +99,27 @@ textArea.addEventListener('keydown', function (e) {
 	if (serviceKeys.includes(e.code)) {
 		return
 	}
+	if (e.code === 'Backspace') {
+		if (e.isTrusted) {
+			return
+		}
+		textArea.value = textArea.value.slice(0, -1)
+		return
+	}
 	if (e.code === 'Tab') {
 		eKey = '\t'
+	}
+	if (e.code === 'ArrowUp') {
+		eKey = '▲'
+	}
+	if (e.code === 'ArrowLeft') {
+		eKey = '◄'
+	}
+	if (e.code === 'ArrowDown') {
+		eKey = '▼'
+	}
+	if (e.code === 'ArrowRight') {
+		eKey = '►'
 	}
 	e.preventDefault()
 	textArea.focus();

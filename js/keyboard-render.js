@@ -112,10 +112,10 @@ function createButtons(array) {
 				keyboardKey.textContent = 'Alt'
 			}
 			if (array[i][j] === 'Space') {
-				keyboardKey.textContent = ''
+				keyboardKey.textContent = ' '
 			}
 			if (array[i][j] === 'ArrowUp' || array[i][j] === 'ArrowLeft' || array[i][j] === 'ArrowDown' || array[i][j] === 'ArrowRight') {
-				keyboardKey.innerHTML = '<span></span>'
+				keyboardKey.textContent = ''
 			}
 
 			keyboardRow.append(keyboardKey)

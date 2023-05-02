@@ -1,5 +1,14 @@
 import { eCodes } from "./keyboard-languages.js"
 
+function getPlatform() {
+	const MacOS = /Macintosh/
+	const WindowsOS = /Windows NT/
+	if (MacOS.test(navigator.userAgent)) {
+		return 'MacOS'
+	}
+	return 'Windows'
+}
+
 function init() {
 	const wrapper = document.createElement('div')
 	wrapper.classList.add('wrapper')
@@ -42,6 +51,11 @@ function initKeyboard(lang = eCodes) {
 	keyboardInfo.classList.add('keyboard__info')
 	keyboardInfo.innerHTML = 'Для переключения языка комбинация: левыe shift + alt'
 	keyboard.append(keyboardInfo)
+
+	const keyboardInfoOS = document.createElement('div')
+	keyboardInfo.classList.add('keyboard__info')
+	keyboardInfoOS.innerHTML = `Клавиатура создана в операционной системе ${getPlatform()}`
+	keyboard.append(keyboardInfoOS)
 
 }
 

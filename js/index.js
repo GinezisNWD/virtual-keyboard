@@ -1,5 +1,6 @@
 import { init, initKeyboard } from "./keyboard-render.js"
-import { keysToUpperCase } from "./keyboard-key-functions.js"
+import { keysToUpperCase, switcLanguage } from "./keyboard-key-functions.js"
+import { en, enShift } from './keyboard-languages.js'
 init()
 initKeyboard()
 
@@ -10,6 +11,7 @@ const serviceKeys = ['Backspace', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'A
 	'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ArrowLeft',
 	'ArrowDown', 'ArrowRight', 'ControlRight',]
 let isCapsActive = false
+let language = 'en'
 
 
 document.addEventListener('keydown', function (e) {
@@ -20,6 +22,9 @@ document.addEventListener('keydown', function (e) {
 	if (e.code === 'CapsLock') {
 		isCapsActive = !isCapsActive
 		keysToUpperCase(isCapsActive, renderedKeys)
+	}
+	if (e.code === 'ShiftLeft') {
+		switcLanguage(renderedKeys, enShift)
 	}
 	renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
 
@@ -35,7 +40,13 @@ document.addEventListener('keyup', function (e) {
 	} else {
 		renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.remove('_active')
 	}
+
+	if (e.code === 'ShiftLeft') {
+		switcLanguage(renderedKeys, en)
+	}
+
 })
+
 
 renderedKeys.forEach(elem => elem.addEventListener('mousedown', function (e) {
 	e.preventDefault()
@@ -74,7 +85,3 @@ textArea.addEventListener('keydown', function (e) {
 
 	textArea.value += eKey
 })
-
-
-const test = [1, 2, 3]
-console.log(test.filter(elem => elem !== 2))

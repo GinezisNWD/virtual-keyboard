@@ -1,4 +1,4 @@
-import { en, enAlt } from "./keyboard-languages.js"
+import { eCodes } from "./keyboard-languages.js"
 
 function init() {
 	const wrapper = document.createElement('div')
@@ -14,7 +14,7 @@ function init() {
 	main.prepend(container)
 }
 
-function initKeyboard(lang = en) {
+function initKeyboard(lang = eCodes) {
 	const container = document.querySelector('.main .container')
 
 	const keyboard = document.createElement('section')

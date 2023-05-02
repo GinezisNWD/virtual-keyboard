@@ -40,9 +40,9 @@ document.addEventListener('keydown', function (e) {
 		}
 		keysToUpperCase(isCapsActive, renderedKeys)
 	}
-
-	renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
-
+	try {
+		renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
+	} catch (error) { }
 })
 
 document.addEventListener('keyup', function (e) {
@@ -53,7 +53,10 @@ document.addEventListener('keyup', function (e) {
 			capsLockKey.classList.remove('_active')
 		}
 	} else {
-		renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.remove('_active')
+		try {
+			renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.remove('_active')
+		} catch (error) { }
+
 	}
 
 	if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {

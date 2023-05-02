@@ -1,4 +1,4 @@
-import { en, enAlt } from "./keyboard-languages.js"
+import { eCodes } from "./keyboard-languages.js"
 
 function init() {
 	const wrapper = document.createElement('div')
@@ -14,7 +14,7 @@ function init() {
 	main.prepend(container)
 }
 
-function initKeyboard(lang = 'en') {
+function initKeyboard(lang = eCodes) {
 	const container = document.querySelector('.main .container')
 
 	const keyboard = document.createElement('section')
@@ -36,8 +36,7 @@ function initKeyboard(lang = 'en') {
 	keyboarKeys.classList.add('keyboard__keys')
 	keyboard.append(keyboarKeys)
 
-	createButtons(en)
-
+	createButtons(lang)
 }
 
 function createButtons(array) {
@@ -47,12 +46,72 @@ function createButtons(array) {
 		keyboardRow.classList.add('keyboard__row')
 		keyboarKeys.append(keyboardRow)
 		for (let j = 0; j < array[i].length; j++) {
-			const keyboardKey = document.createElement('div')
+			const keyboardKey = document.createElement('button')
 			keyboardKey.classList.add('keyboard__key')
+			keyboardKey.setAttribute('value', `${array[i][j]}`)
+
 			keyboardKey.textContent = array[i][j]
-			if (array[i][j] === 'up' || array[i][j] === 'left' || array[i][j] === 'down' || array[i][j] === 'right') {
+			if (array[i][j] === 'Backquote') {
+				keyboardKey.textContent = '`'
+			}
+			if (array[i][j].startsWith('Digit')) {
+				keyboardKey.textContent = parseInt(array[i][j].match(/\d+/))
+			}
+			if (array[i][j] === 'Minus') {
+				keyboardKey.textContent = '-'
+			}
+			if (array[i][j] === 'Equal') {
+				keyboardKey.textContent = '='
+			}
+			if (array[i][j].startsWith('Key')) {
+				keyboardKey.textContent = array[i][j].at(3).toLowerCase()
+			}
+			if (array[i][j] === 'BracketLeft') {
+				keyboardKey.textContent = '['
+			}
+			if (array[i][j] === 'BracketRight') {
+				keyboardKey.textContent = ']'
+			}
+			if (array[i][j] === 'Backslash') {
+				keyboardKey.textContent = '\\'
+			}
+			if (array[i][j] === 'Delete') {
+				keyboardKey.textContent = 'Del'
+			}
+			if (array[i][j] === 'Semicolon') {
+				keyboardKey.textContent = ';'
+			}
+			if (array[i][j] === 'Quote') {
+				keyboardKey.textContent = `'`
+			}
+			if (array[i][j] === 'ShiftLeft' || array[i][j] === 'ShiftRight') {
+				keyboardKey.textContent = 'Shift'
+			}
+			if (array[i][j] === 'Comma') {
+				keyboardKey.textContent = ','
+			}
+			if (array[i][j] === 'Period') {
+				keyboardKey.textContent = '.'
+			}
+			if (array[i][j] === 'Slash') {
+				keyboardKey.textContent = '/'
+			}
+			if (array[i][j] === 'ControlLeft' || array[i][j] === 'ControlRight') {
+				keyboardKey.textContent = 'Ctrl'
+			}
+			if (array[i][j] === 'MetaLeft') {
+				keyboardKey.textContent = 'Win'
+			}
+			if (array[i][j] === 'AltLeft' || array[i][j] === 'AltRight') {
+				keyboardKey.textContent = 'Alt'
+			}
+			if (array[i][j] === 'Space') {
+				keyboardKey.textContent = ''
+			}
+			if (array[i][j] === 'ArrowUp' || array[i][j] === 'ArrowLeft' || array[i][j] === 'ArrowDown' || array[i][j] === 'ArrowRight') {
 				keyboardKey.innerHTML = '<span></span>'
 			}
+
 			keyboardRow.append(keyboardKey)
 		}
 	}
@@ -76,7 +135,5 @@ function createButtons(array) {
 	renderedKeys[62].classList.add('keyboard__key_service', 'keyboard__key_right')
 	renderedKeys[63].classList.add('keyboard__key_service', 'keyboard__key_ctrl', 'keyboard__key_right-ctrl')
 }
-
-
 
 export { init, initKeyboard }

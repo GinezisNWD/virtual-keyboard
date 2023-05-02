@@ -465,6 +465,7 @@ h6 {
   color: azure;
   border-radius: 5px;
   background: #444444;
+  transition: 0.3s;
 }
 .keyboard__key:hover {
   cursor: pointer;
@@ -498,28 +499,32 @@ h6 {
 .keyboard__key_space {
   flex: 1 1 auto;
 }
-.keyboard__key_up span {
+.keyboard__key_up::after {
+  content: "";
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 12px solid azure;
 }
-.keyboard__key_down span {
+.keyboard__key_down::after {
+  content: "";
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 12px solid azure;
 }
-.keyboard__key_left span {
+.keyboard__key_left::after {
+  content: "";
   width: 0;
   height: 0;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-right: 12px solid azure;
 }
-.keyboard__key_right span {
+.keyboard__key_right::after {
+  content: "";
   width: 0;
   height: 0;
   border-top: 6px solid transparent;
@@ -527,7 +532,8 @@ h6 {
   border-left: 12px solid azure;
 }
 .keyboard__key._active {
-  border-radius: 40px;
+  transform: translateY(2px);
+  padding: 3px 0 0 0;
   background-color: rgb(22, 172, 22);
 }
 .keyboard__info {

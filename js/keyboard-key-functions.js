@@ -9,4 +9,18 @@ function switcLanguage(currentLeng, leng) {
 	const currentLengCopy = [...currentLeng]
 	currentLengCopy.forEach((elem, index) => { elem.innerHTML = leng[index] })
 }
-export { keysToUpperCase, switcLanguage }
+
+
+function getCursorPosition(elem) {
+	let cursorPos = null;
+	if (document.selection) {
+		let range = document.selection.createRange();
+		range.moveStart('textedit', -1);
+		cursorPos = range.text.length;
+	}
+	else {
+		cursorPos = elem.selectionStart;
+	}
+	return cursorPos
+}
+export { keysToUpperCase, switcLanguage, getCursorPosition }

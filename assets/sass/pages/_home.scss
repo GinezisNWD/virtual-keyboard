@@ -47,6 +47,8 @@
 		border-radius: 5px;
 		background: #444444;
 
+		transition: 0.3s;
+
 		&:hover {
 			cursor: pointer;
 			background: rgb(117, 167, 117);
@@ -106,7 +108,8 @@
 		&_right-alt {}
 
 		&_up {
-			span {
+			&::after {
+				content: '';
 				width: 0;
 				height: 0;
 				border-left: 6px solid transparent;
@@ -116,7 +119,8 @@
 		}
 
 		&_down {
-			span {
+			&::after {
+				content: '';
 				width: 0;
 				height: 0;
 				border-left: 6px solid transparent;
@@ -126,7 +130,8 @@
 		}
 
 		&_left {
-			span {
+			&::after {
+				content: '';
 				width: 0;
 				height: 0;
 				border-top: 6px solid transparent;
@@ -136,7 +141,8 @@
 		}
 
 		&_right {
-			span {
+			&::after {
+				content: '';
 				width: 0;
 				height: 0;
 				border-top: 6px solid transparent;
@@ -147,7 +153,8 @@
 	}
 
 	&__key._active {
-		border-radius: 40px;
+		transform: translateY(2px);
+		padding: 3px 0 0 0;
 		background-color: rgb(22, 172, 22);
 	}
 

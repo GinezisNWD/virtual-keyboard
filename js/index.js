@@ -7,15 +7,27 @@ initKeyboard()
 const renderedKeys = document.querySelectorAll('.keyboard__key')
 const textArea = document.querySelector('.keyboard__input')
 const capsLockKey = document.querySelector('.keyboard__key_caps-lock');
-const serviceKeys = ['Backspace', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ArrowUp',
-	'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ArrowLeft',
-	'ArrowDown', 'ArrowRight', 'ControlRight',]
+const serviceKeys = ['Delete', 'CapsLock', 'Enter', 'ShiftLeft',
+	'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ControlRight',]
 let isCapsActive = false
-let isEnglish = true
+
+
+let isEnglish = localStorage.getItem('lang')
+if (typeof isEnglish === 'object' || isEnglish === 'true') {
+	isEnglish = true
+} else {
+	isEnglish = false
+}
+
+if (!isEnglish) {
+	switcLanguage(renderedKeys, ru)
+} else {
+	switcLanguage(renderedKeys, en)
+}
+
 
 
 document.addEventListener('keydown', function (e) {
-	console.log(e)
 	if (e.code === 'Tab') {
 		e.preventDefault()
 	}
@@ -33,6 +45,7 @@ document.addEventListener('keydown', function (e) {
 
 	if (e.shiftKey && e.altKey) {
 		isEnglish = !isEnglish
+		localStorage.setItem('lang', isEnglish)
 		if (!isEnglish) {
 			switcLanguage(renderedKeys, ruShift)
 		} else {
@@ -40,9 +53,9 @@ document.addEventListener('keydown', function (e) {
 		}
 		keysToUpperCase(isCapsActive, renderedKeys)
 	}
-
-	renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
-
+	try {
+		renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.add('_active')
+	} catch (error) { }
 })
 
 document.addEventListener('keyup', function (e) {
@@ -53,7 +66,10 @@ document.addEventListener('keyup', function (e) {
 			capsLockKey.classList.remove('_active')
 		}
 	} else {
-		renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.remove('_active')
+		try {
+			renderedKeys[[...renderedKeys].findIndex(elem => elem.getAttribute('value') == e.code)].classList.remove('_active')
+		} catch (error) { }
+
 	}
 
 	if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
@@ -97,8 +113,27 @@ textArea.addEventListener('keydown', function (e) {
 	if (serviceKeys.includes(e.code)) {
 		return
 	}
+	if (e.code === 'Backspace') {
+		if (e.isTrusted) {
+			return
+		}
+		textArea.value = textArea.value.slice(0, -1)
+		return
+	}
 	if (e.code === 'Tab') {
 		eKey = '\t'
+	}
+	if (e.code === 'ArrowUp') {
+		eKey = '▲'
+	}
+	if (e.code === 'ArrowLeft') {
+		eKey = '◄'
+	}
+	if (e.code === 'ArrowDown') {
+		eKey = '▼'
+	}
+	if (e.code === 'ArrowRight') {
+		eKey = '►'
 	}
 	e.preventDefault()
 	textArea.focus();

@@ -10,11 +10,24 @@ const capsLockKey = document.querySelector('.keyboard__key_caps-lock');
 const serviceKeys = ['Delete', 'CapsLock', 'Enter', 'ShiftLeft',
 	'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'AltRight', 'ControlRight',]
 let isCapsActive = false
-let isEnglish = true
+
+
+let isEnglish = localStorage.getItem('lang')
+if (typeof isEnglish === 'object' || isEnglish === 'true') {
+	isEnglish = true
+} else {
+	isEnglish = false
+}
+
+if (!isEnglish) {
+	switcLanguage(renderedKeys, ru)
+} else {
+	switcLanguage(renderedKeys, en)
+}
+
 
 
 document.addEventListener('keydown', function (e) {
-	console.log(e)
 	if (e.code === 'Tab') {
 		e.preventDefault()
 	}
@@ -32,6 +45,7 @@ document.addEventListener('keydown', function (e) {
 
 	if (e.shiftKey && e.altKey) {
 		isEnglish = !isEnglish
+		localStorage.setItem('lang', isEnglish)
 		if (!isEnglish) {
 			switcLanguage(renderedKeys, ruShift)
 		} else {
